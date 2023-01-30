@@ -1,0 +1,38 @@
+  What is Emmet?
+=>it is a plugin for code editors that give fast and easy to use snippets for HTML .It allows developers to expand abbreviations int o full HTML code 
+
+
+Difference between a Library and Framework?
+=> library implements a particular function.Provides reusable function for our code.the code controls when and where to call a library.helps to reuse a software function.
+We can define a framework as a collection of libraries implementing a particular methodology. Provides ready to use tools ,standards templates,and policies for fats application developement.framework controls calling of libraries
+
+
+What is CDN? Why do we use it?
+=>A content delivery network (CDN) is a network of interconnected servers that speeds up webpage loading for data-heavy applications. CDN can stand for content delivery network or content distribution network. When a user visits a website, data from that website's server has to travel across the internet to reach the user's computer. If the user is located far from that server, it will take a long time to load a large file, such as a video or website image. Instead, the website content is stored on CDN servers geographically closer to the users and reaches their computers much faster.The primary purpose of a content delivery network (CDN) is to reduce latency, or reduce the delay in communication created by a network's design. Because of the global and complex nature of the internet, communication traffic between websites (servers) and their users (clients) has to move over large physical distances. The communication is also two-way, with requests going from the client to the server and responses coming back.
+A CDN improves efficiency by introducing intermediary servers between the client and the website server. These CDN servers manage some of the client-server communications. They decrease web traffic to the web server, reduce bandwidth consumption, and improve the user experience of your applications.
+
+
+Why React is called as React?
+=> React is called React because it reacts to changes in data.When data changes, React automatically updates the UI to reflect the changes. This makes React very fast and responsive, and helps make your web applications more user-friendly.The name "React" was chosen because the library was designed to allow developers to "react" to changes in state and data within an application, and to update the user interface in a declarative and efficient manner.
+
+
+What is crossorigin in script tag?
+=>  The crossorigin attribute sets the mode of the request to an HTTP CORS Request.Web pages often make requests to load resources on other servers. Here is where CORS comes in.A cross-origin request is a request for a resource (e.g. style sheets, iframes, images, fonts, or scripts) from another domain.CORS is used to manage cross-origin requests.CORS stands for Cross-Origin Resource Sharing, and is a mechanism that allows resources on a web page to be requested from another domain outside their own domain. It defines a way of how a browser and server can interact to determine whether it is safe to allow the cross-origin request. CORS allows servers to specify who can access the assets on the server, among many other things.
+
+
+What is diference between React and ReactDOM?
+=> React library is responsible for creating views and ReactDOM library is responsible to actually render UI in the browser.React is a JavaScript library for building User Interfaces and ReactDOM is the JavaScript library that allows React to interact with the DOM.
+React: a javascript library, designed for building user interfaces
+React-DOM: a complimentary library to React which glues React to the browser DOM
+
+
+What is async and defer?
+=>Async in script tag in JavaScript is a way to load scripts asynchronously. That means, if a script is async, it will be loaded independently of other scripts on the page, and will not block the page from loading.f you have a page with several external scripts, loading them all asynchronously can speed up the page load time, because the browser can download and execute them in parallel.To use async, simply add the async attribute to your script tag:<script async src="script.js"></script>
+By using the defer attribute in HTML, the browser will load the script only after parsing (loading) the page. This can be helpful if you have a script that is dependent on other scripts, or if you want to improve the loading time of your page by loading scripts after the initial page load.To use defer, simply add the defer attribute to your script tag:
+<script defer src="script.js"></script>
+
+
+What is difference between react.development.js and react.production.js files via CDN?
+=>The development build is used - as the name suggests - for development reasons. You have Source Maps, debugging and often times hot reloading ability in those builds.
+The production build, on the other hand, runs in production mode which means this is the code running on your client's machine. The production build runs uglify and builds your source files into one or multiple minimized files. It also extracts CSS and images and of course any other sources you're loading with Webpack. There's also no hot reloading included. Source Maps might be included as separate files depending on your webpack devtool settings.The very basic difference is that Production Build has ugly, minified(compressed) version of your javascript code, so this makes rendering of file on end user's browser very quick and performance enhancing.
+That specifically separates production from development is dependent on your preferences and requirements, which means it pretty much depends on what you write in your Webpack configuration.
