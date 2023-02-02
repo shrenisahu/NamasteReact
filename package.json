@@ -1,0 +1,30 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shrenisahu/NamasteReact.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shrenisahu/NamasteReact/issues"
+  },
+  "homepage": "https://github.com/shrenisahu/NamasteReact#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "browserslist": "^4.21.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
