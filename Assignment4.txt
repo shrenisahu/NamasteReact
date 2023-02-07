@@ -1,5 +1,5 @@
 Ques1 : Is JSX mandatory for React?
-=> no its is not mandatory.Recat elements can be created even without using JSX
+=> no its is not mandatory.Recat elements can be created even without using JSX.
 
 Ques2 : Is ES6 mandatory for React?
 => no its is not mandatory.React can work without it as well
