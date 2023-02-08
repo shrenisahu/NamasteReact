@@ -14,4 +14,4 @@ Ques 5:why do we ned keys in react?
 => a key helps us to identify each element uniquely.So when ever Reconcilation happens it compares the keys and decides what things to re render.its helps in fast processing of re render.
 
 Ques 6:Can we use index as keys in react?
-=>yes we can use index as keys in react.but its is not a good practice to use index as keys as it might create problems in ui.suppose we rendered elements using keys as index,nut now some more elements are added so the index number changes and this might create problems in ui
+=>yes we can use index as keys in react.but its is not a good practice to use index as keys as it might create problems in ui.suppose we rendered elements using keys as index,nut now some more elements are added so the index number changes and this might create problems in ui...
