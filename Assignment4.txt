@@ -15,3 +15,7 @@ Ques 5:why do we ned keys in react?
 
 Ques 6:Can we use index as keys in react?
 =>yes we can use index as keys in react.but its is not a good practice to use index as keys as it might create problems in ui.suppose we rendered elements using keys as index,nut now some more elements are added so the index number changes and this might create problems in ui......
+
+
+Ques 7:React Fiber?
+=> React Fiber—the core algorithm behind React. React Fiber is the new reconciliation algorithm in React 16.React Fiber is a completely backward-compatible rewrite of the old reconciler. This new reconciliation algorithm from React is called Fiber Reconciler. The name comes from fiber, which it uses to represent the node of the DOM tree. We will go through fiber in detail in later sections.
