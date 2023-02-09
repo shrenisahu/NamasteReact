@@ -1,0 +1,24 @@
+Ques 1: default export 
+=>when we export only one component from a file we can export it as  a default export.
+syntax: export default name
+
+
+Ques 2:named export
+=>when we export multiple components from a file we can export one component as defailt but other components will be exported as name 
+
+syntax :export {name1,name2,name3};
+
+
+Ques 3:inportance of config.js
+=> All the hard coded data thatour app needs will go inside this file
+
+Ques 4:React Hooks
+=> react hooks are js func that allow us to add some functionalities into our app.they return some functionalities
+
+Ques5: why do we need useState hooks?
+=>when we update a normal js variable ,react does not keep it with sync with the ui.those changes are not reflected in the ui,this happens because of one way data binding in react.To solve this issue we use useState hooks.React keeps track of these state variables and keeps them in sync with the ui.whenever these variables are changes react rerenders the component.
+
+useState hook is a js function that returns an array.The first element is a state variable and the second element is a function to update that state variable.
+
+Syntax: 
+const[variable,fucntion]=useState(default Value);
