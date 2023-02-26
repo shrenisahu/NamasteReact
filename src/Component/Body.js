@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestraurantCard";
-import { data } from "./data";
+import { Swiggy_Url } from "./config";
+// import Loader from "./Loader";
+import Shimmer from "./Shimmer";
+
 const Body = () => {
+  const [isFilterDone, setfilterDone] = useState(false);
+  const [allRestaurant, setAllRestaurant] = useState([]);
   const [searchText, setSearchInput] = useState();
-  const [restaurant, setRestaurant] = useState(data);
-  const filterData = (searchText, restaurant) => {
-    const ans = data.filter((props) => props.data.name.includes(searchText));
-    setRestaurant(ans);
+  const [filteredRestaurant, setFilterRestaurant] = useState([]);
+
+  const filterData = (searchText, allRestaurant) => {
+    const ans = allRestaurant?.filter((props) =>
+      props?.data?.data?.name?.toLowerCase().includes(searchText?.toLowerCase())
+    );
+
+    setFilterRestaurant(ans);
+    setfilterDone(true);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const tempdata = await fetch(Swiggy_Url);
+
+    const json = await tempdata.json();
+    const data1 = json.data.cards;
+    setAllRestaurant(data1);
+    setFilterRestaurant(data1);
+  }
+  // if (constantData.length == 0) return <Loader />;
   return (
     <>
       <div className="search-container">
@@ -23,20 +46,28 @@ const Body = () => {
         />
         <button
           className="search-btn"
-          onClick={() => filterData(searchText, restaurant)}
+          onClick={() => filterData(searchText, allRestaurant)}
         >
           Search
         </button>
       </div>
+
+      {allRestaurant?.length === 0 ? <Shimmer /> :
       <div className="restaurant-list">
-        {restaurant.map((p) => {
+        {filteredRestaurant.map((p) => {
           return (
             <>
-              <RestaurantCard {...p.data} />
+              <RestaurantCard {...p?.data?.data} />
             </>
           );
         })}
       </div>
+      
+      
+      
+      }
+
+      
     </>
   );
 };

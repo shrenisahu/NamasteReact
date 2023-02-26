@@ -1,6 +1,6 @@
 import { ImageUrl } from "./config";
-const RestaurantCard = ({ name, cloudinaryImageId, avgRating }) => {
-  // console.log(id);
+const RestaurantCard = ({ name, avgRating, cloudinaryImageId }) => {
+  // console.log(data);
 
   return (
     <div className="card">

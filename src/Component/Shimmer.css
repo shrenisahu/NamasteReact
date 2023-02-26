@@ -1,0 +1,12 @@
+.shimmer-box {
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: red; */
+}
+.shimmer-cards {
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+  margin: 10px;
+  padding: 10px;
+}
