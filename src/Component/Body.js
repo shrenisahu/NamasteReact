@@ -31,7 +31,7 @@ const Body = () => {
     setAllRestaurant(data1);
     setFilterRestaurant(data1);
   }
-  // if (constantData.length == 0) return <Loader />;
+
   return (
     <>
       <div className="search-container">
@@ -52,22 +52,20 @@ const Body = () => {
         </button>
       </div>
 
-      {allRestaurant?.length === 0 ? <Shimmer /> :
-      <div className="restaurant-list">
-        {filteredRestaurant.map((p) => {
-          return (
-            <>
-              <RestaurantCard {...p?.data?.data} />
-            </>
-          );
-        })}
-      </div>
-      
-      
-      
-      }
-
-      
+      {allRestaurant?.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="restaurant-list">
+          {filteredRestaurant.map((p) => {
+            return (
+              <>
+                <RestaurantCard {...p?.data?.data} />
+                {console.log(p?.data?.data)}
+              </>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };

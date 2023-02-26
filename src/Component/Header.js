@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [islogIn, setIsLoggedIn] = useState(false);
 
   const login = () => {
     setIsLoggedIn(false);
@@ -15,12 +16,20 @@ const Header = () => {
       <Logo />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <Link to="/">
+            {" "}
+            <li>Home</li>
+          </Link>
+          <Link to="/about">
+            <li>About Us</li>
+          </Link>
+
+          <Link to="/contact">
+            <li>Contact Us</li>
+          </Link>
           <li>Cart Us</li>
 
-          {isLoggedIn ? (
+          {islogIn ? (
             <button onClick={() => login()}>Logout</button>
           ) : (
             <button onClick={() => logout()}>Login</button>

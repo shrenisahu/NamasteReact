@@ -1,24 +1,58 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Contact from "./src/Component/Contact";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./src/Component/Header";
 import Body from "./src/Component/Body";
 import Footer from "./src/Component/Footer";
+import RestaurantDetail from "./src/Component/RestaurantDetails";
+import Error from "./src/Component/Error";
 import "./index.css";
+import AboutUs from "./src/Component/AboutUs";
+import { useState } from "react";
 const App = () => {
-  const a = "The Prime Time";
-  const b = "Prime";
-  const ans = a.includes(b);
-  console.log(ans);
-
-  return (
+  const [islogIn, setIsLoggedIn] = useState(true);
+  return islogIn ? (
+    <button onClick={() => setIsLoggedIn(false)}>Login</button>
+  ) : (
     <div>
-      <h1>here</h1>
+      <button onClick={() => setIsLoggedIn(true)}>Logout</button>
       <Header />
+      <Outlet></Outlet>
 
-      <Body />
       <Footer />
     </div>
   );
 };
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantDetail />,
+      },
+    ],
+  },
+  {
+    path: "about",
+    element: <AboutUs />,
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);
