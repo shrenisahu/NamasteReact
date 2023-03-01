@@ -10,6 +10,7 @@ import Error from "./src/Component/Error";
 import "./index.css";
 import AboutUs from "./src/Component/AboutUs";
 import { useState } from "react";
+import Profile from "./src/Component/Profile";
 const App = () => {
   const [islogIn, setIsLoggedIn] = useState(true);
   return islogIn ? (
@@ -34,6 +35,12 @@ const appRouter = createBrowserRouter([
       {
         path: "about",
         element: <AboutUs />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",

@@ -60,7 +60,6 @@ const Body = () => {
             return (
               <>
                 <RestaurantCard {...p?.data?.data} />
-                {console.log(p?.data?.data)}
               </>
             );
           })}
