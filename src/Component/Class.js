@@ -31,6 +31,30 @@ class ProfileClass extends React.Component {
     console.log("child componentWillUnmount ");
   }
 
+  
+//    async componentDidMount() {
+
+//     this.timer = setInterval(() => {
+//       console.log("child  componentDidMount");
+//     }, 1000);
+//   }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevState.userInfo !== this.state.userInfo) {
+//       console.log("child componentDidUpdate");
+//     }
+//   }
+
+//   componentWillUnmount() {
+//     clearInterval(this.timer);
+//     console.log("child componentWillUnmount ");
+//   }
+
+  
+  
+  
+  
+  
   render() {
     console.log("child render");
 
