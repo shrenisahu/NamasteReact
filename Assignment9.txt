@@ -1,0 +1,28 @@
+when and why we use lazy loading?
+=> the job of a bundler is to bundle things up.Means that combine the whole code of the app in one js file.
+But what if our app has 1000 components .Index file may blast up with such long code if combined.So to prevent this we try to each the data related to each file logically.This is called a logical Bundline,chunking,lazy loading,dynamic bundling,onDemand Loading,Dynamic  Import.
+
+we do not have data loaded in advance .we do it dynamically,when we click on any logic the code for that is put up in the bundler file.
+
+syntax to do this:
+import{lazy} from "react
+const ComponentName=lazy(()=>import(path))
+
+<ComponentName/>
+
+=================================
+
+The above might give us some errors
+
+See calling data dynamically might take sometime ,meanwhile react tries to render .But how will it render the component when data has not arrived.hence react tries to suspent the loading so to fill up the gap untill data arrives we use
+
+<Suspense>
+<ComponentName/>
+</Suspense>
+
+
+if we want to show any component meanwhile
+<Suspense fallback={<Shimmer/>}>
+<ComponentName/>
+</Suspense>
+

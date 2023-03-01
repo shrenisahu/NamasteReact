@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestraurantCard";
-import { Swiggy_Url } from "./config";
-// import Loader from "./Loader";
-import Shimmer from "./Shimmer";
 
+import useGetBodyRestaurant from "./utils/hooks/useGetBodyRestaurant";
+import Shimmer from "./Shimmer";
+import useOnline from "./utils/hooks/useOnline";
 const Body = () => {
+  const allRestaurant = useGetBodyRestaurant();
+
+  const temp = Object.values(allRestaurant);
+  const [filteredRestaurant, setFilterRestaurant] = useState(allRestaurant);
   const [isFilterDone, setfilterDone] = useState(false);
-  const [allRestaurant, setAllRestaurant] = useState([]);
+
   const [searchText, setSearchInput] = useState();
-  const [filteredRestaurant, setFilterRestaurant] = useState([]);
+  useEffect(() => {
+    setFilterRestaurant(allRestaurant);
+  }, [allRestaurant]);
 
   const filterData = (searchText, allRestaurant) => {
     const ans = allRestaurant?.filter((props) =>
@@ -19,18 +25,8 @@ const Body = () => {
     setfilterDone(true);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
-    const tempdata = await fetch(Swiggy_Url);
-
-    const json = await tempdata.json();
-    const data1 = json.data.cards;
-    setAllRestaurant(data1);
-    setFilterRestaurant(data1);
-  }
+  const online = useOnline();
+  if (!online) return <h1>you are offlineb pls check inyternet connection</h1>;
 
   return (
     <>
@@ -56,13 +52,17 @@ const Body = () => {
         <Shimmer />
       ) : (
         <div className="restaurant-list">
-          {filteredRestaurant.map((p) => {
-            return (
-              <>
-                <RestaurantCard {...p?.data?.data} />
-              </>
-            );
-          })}
+          {isFilterDone && filteredRestaurant.length == 0 ? (
+            <h1>notMatch</h1>
+          ) : (
+            filteredRestaurant?.map((p) => {
+              return (
+                <>
+                  <RestaurantCard {...p?.data?.data} />
+                </>
+              );
+            })
+          )}
         </div>
       )}
     </>

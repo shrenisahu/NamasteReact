@@ -11,7 +11,7 @@ const Profile = () => {
       console.log("clear timer");
     };
   }, []);
-  return <div>profile</div>;
+  return <div>profile functional component</div>;
 };
 
 export default Profile;

@@ -7,8 +7,8 @@ const Shimmer = () => {
       <div className="shimmer-box">
         {Array(20)
           .fill("he")
-          .map((props) => (
-            <div className="shimmer-cards"></div>
+          .map((props, index) => (
+            <div key={index} className="shimmer-cards"></div>
           ))}
       </div>
     </>

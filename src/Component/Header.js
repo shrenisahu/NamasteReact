@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "./Logo";
-import Navbar from "./Navbar";
+import useLoggedIn from "./utils/hooks/useLoggedIn";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [islogIn, setIsLoggedIn] = useState(false);
@@ -11,6 +11,8 @@ const Header = () => {
   const logout = () => {
     setIsLoggedIn(true);
   };
+
+  // const logIn = useLoggedIn();
   return (
     <div className="header">
       <Logo />
@@ -28,6 +30,10 @@ const Header = () => {
             <li>Contact Us</li>
           </Link>
           <li>Cart Us</li>
+
+          <Link to="/instamart">
+            <li>instamart</li>
+          </Link>
 
           {islogIn ? (
             <button onClick={() => login()}>Logout</button>

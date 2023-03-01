@@ -32,10 +32,9 @@ class AboutUs extends React.Component {
     // console.log("parent render");
     return (
       <h1>
-        <h1>Profile Section</h1>
         <Outlet />
-        <ProfileClass name="Shree" />
-        <Profile />
+        {/* <ProfileClass name="Shree" /> */}
+        {/* <Profile /> */}
       </h1>
     );
   }

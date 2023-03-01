@@ -13,12 +13,9 @@ class ProfileClass extends React.Component {
     console.log("child const");
   }
   async componentDidMount() {
-    const data = await fetch(url); // here we are using await which causes the parent did mount to print befor child didmount
-    const json = await data.json();
-    console.log("state is set");
-    this.setState({ userInfo: json });
-
-    console.log("child  componentDidMount");
+    this.timer = setInterval(() => {
+      console.log("child  componentDidMount");
+    }, 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -28,6 +25,7 @@ class ProfileClass extends React.Component {
   }
 
   componentWillUnmount() {
+    clearInterval(this.timer);
     console.log("child componentWillUnmount ");
   }
 

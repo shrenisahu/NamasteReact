@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Contact from "./src/Component/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -8,9 +8,15 @@ import Footer from "./src/Component/Footer";
 import RestaurantDetail from "./src/Component/RestaurantDetails";
 import Error from "./src/Component/Error";
 import "./index.css";
-import AboutUs from "./src/Component/AboutUs";
 import { useState } from "react";
 import Profile from "./src/Component/Profile";
+import ProfileClass from "./src/Component/Class";
+import Shimmer from "./src/Component/Shimmer";
+// import InstaMart from "./src/Component/InstaMart";
+
+const InstaMart = lazy(() => import("./src/Component/InstaMart")); // this is login bundling,code splitting,chunking,lazy loading,onDemand loading
+
+const AboutUs = lazy(() => import("./src/Component/AboutUs"));
 const App = () => {
   const [islogIn, setIsLoggedIn] = useState(true);
   return islogIn ? (
@@ -34,11 +40,19 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "about",
-        element: <AboutUs />,
+        element: (
+          <Suspense fallback={<h1>Loading</h1>}>
+            <AboutUs />
+          </Suspense>
+        ),
         children: [
           {
             path: "profile",
             element: <Profile />,
+          },
+          {
+            path: "class",
+            element: <ProfileClass />,
           },
         ],
       },
@@ -53,6 +67,15 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantDetail />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            {/* if we do not use this .we will get error component loaded */}
+            <InstaMart />
+          </Suspense>
+        ),
       },
     ],
   },
