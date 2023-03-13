@@ -3,7 +3,8 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import Profile from "./Profile";
 
 import ProfileClass from "./Class";
-// const AboutUs4 = () => {
+import UserContext from "./utils/UserContext";
+// const AboutUs = () => {
 //   return (
 //     <h1>
 //       <h1>Profile Section</h1>
@@ -32,6 +33,16 @@ class AboutUs extends React.Component {
     // console.log("parent render");
     return (
       <h1>
+        this is About
+        <UserContext.Consumer>
+          {(value) => {
+            return (
+              <h1>
+                {value.user.name}-{value.user.email}
+              </h1>
+            );
+          }}
+        </UserContext.Consumer>
         <Outlet />
         {/* <ProfileClass name="Shree" /> */}
         {/* <Profile /> */}

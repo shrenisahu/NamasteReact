@@ -1,17 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "./utils/UserContext";
 import Logo from "./Logo";
 import useLoggedIn from "./utils/hooks/useLoggedIn";
 import { Link } from "react-router-dom";
 const Header = () => {
-  const [islogIn, setIsLoggedIn] = useState(false);
-
-  const login = () => {
-    setIsLoggedIn(false);
-  };
-  const logout = () => {
-    setIsLoggedIn(true);
-  };
-
+  const { user } = useContext(UserContext);
   // const logIn = useLoggedIn();
   return (
     <div className="header">
@@ -19,7 +12,6 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <Link to="/">
-            {" "}
             <li>Home</li>
           </Link>
           <Link to="/about">
@@ -32,14 +24,10 @@ const Header = () => {
           <li>Cart Us</li>
 
           <Link to="/instamart">
-            <li>instamart</li>
+            <li>Instamart</li>
           </Link>
 
-          {islogIn ? (
-            <button onClick={() => login()}>Logout</button>
-          ) : (
-            <button onClick={() => logout()}>Login</button>
-          )}
+          <h1>{user.name}</h1>
         </ul>
       </div>
     </div>

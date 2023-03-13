@@ -1,0 +1,14 @@
+Explore all the ways of writing css?
+=>
+1:- native css:this is the normal css we write,making classes and writing css in .css file
+2:- inline css:this is written inside  in HTML element
+3:- component libraries:materialUI,BaseUI,Ant,Chakra
+4:- styled components:css inside js
+5:- Tailwind css:modern and famous way of writing css
+
+How do we configure tailwind css?
+=>
+
+
+
+

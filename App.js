@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import Contact from "./src/Component/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -12,22 +12,40 @@ import { useState } from "react";
 import Profile from "./src/Component/Profile";
 import ProfileClass from "./src/Component/Class";
 import Shimmer from "./src/Component/Shimmer";
+import UserContext from "./src/Component/utils/UserContext";
 // import InstaMart from "./src/Component/InstaMart";
+import Form from "./src/Component/Form";
 
 const InstaMart = lazy(() => import("./src/Component/InstaMart")); // this is login bundling,code splitting,chunking,lazy loading,onDemand loading
 
 const AboutUs = lazy(() => import("./src/Component/AboutUs"));
 const App = () => {
   const [islogIn, setIsLoggedIn] = useState(true);
+  const [userDetails, setUserDetails] = useState({
+    name: "shreni sahu",
+    email: "shrenisahu@gmail.com",
+  });
+
   return islogIn ? (
-    <button onClick={() => setIsLoggedIn(false)}>Login</button>
+    <>
+      <button onClick={() => setIsLoggedIn(false)}>Login</button>
+      {/* <Form /> */}
+    </>
   ) : (
     <div>
-      <button onClick={() => setIsLoggedIn(true)}>Logout</button>
-      <Header />
-      <Outlet></Outlet>
-
-      <Footer />
+      <button onClick={() => setIsLoggedIn(true)}>
+        Logout
+        {userDetails.name}
+      </button>
+      <UserContext.Provider
+        value={{
+          user: userDetails,
+        }}
+      >
+        <Header />
+        <Outlet></Outlet>
+        <Footer />
+      </UserContext.Provider>
     </div>
   );
 };

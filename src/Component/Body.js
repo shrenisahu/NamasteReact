@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestraurantCard";
-
 import useGetBodyRestaurant from "./utils/hooks/useGetBodyRestaurant";
 import Shimmer from "./Shimmer";
 import useOnline from "./utils/hooks/useOnline";
+
 const Body = () => {
   const allRestaurant = useGetBodyRestaurant();
-
-  const temp = Object.values(allRestaurant);
   const [filteredRestaurant, setFilterRestaurant] = useState(allRestaurant);
   const [isFilterDone, setfilterDone] = useState(false);
-
   const [searchText, setSearchInput] = useState();
+
   useEffect(() => {
     setFilterRestaurant(allRestaurant);
   }, [allRestaurant]);
@@ -20,7 +18,6 @@ const Body = () => {
     const ans = allRestaurant?.filter((props) =>
       props?.data?.data?.name?.toLowerCase().includes(searchText?.toLowerCase())
     );
-
     setFilterRestaurant(ans);
     setfilterDone(true);
   };

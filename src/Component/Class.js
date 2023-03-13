@@ -7,7 +7,7 @@ class ProfileClass extends React.Component {
 
     this.state = {
       userInfo: {
-        login: "summu",
+        login: "pata nhi",
       },
     };
     console.log("child const");
