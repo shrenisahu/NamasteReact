@@ -5,7 +5,7 @@ const useGetBodyRestaurant = () => {
   const [allRestaurant, setAllRestaurant] = useState([]);
   const [tempData, setTempData] = useState([]);
   async function fetchData() {
-    const temp = await fetch();
+    const temp = await fetch(Swiggy_Url);
     const json = await temp.json();
     const data1 = json.data.cards;
     setAllRestaurant(data1);
@@ -18,8 +18,6 @@ const useGetBodyRestaurant = () => {
   }, []);
 
   return tempData;
-
-  
 };
 
 export default useGetBodyRestaurant;

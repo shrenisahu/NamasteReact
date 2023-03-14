@@ -1,0 +1,44 @@
+Major Issues with React solved BY RTK?
+=>Configuring a Redux store is too complicated
+Have to add a lot of packages to build a large scale application
+Redux requires too much boilerplate code which makes it cumbersome to write efficient and clean code.
+
+
+
+Explain Dispatcher?
+=>hook imported from react-redux.It helps us to dispatch an action;
+It takes a reducer function.
+
+Explain Reducer?
+=>these are normal js functions written inside the slice.They do not return any thing,just modify the state directly.
+
+Explain Slice?
+=>Slices are termed as logical seperation of the store.They seperate the various entities that we ned in a store
+
+Explain Selector?
+=>This helps us subscribe the store.means we can read info from the store.This hook take the store which we need to subscribe
+const cartItems = useSelector((store) => store.cart.items);
+// store.slice_name_.state
+
+
+Explain createSlice and its config?
+=>
+
+const cartSlice = createSlice({
+  name: "name of slice",
+  initialState: {
+   
+  },
+  reducers: {
+   
+    addItem: (state, action) => {
+      state.items.push(action.payload);
+    },
+   action_name:action
+  },
+});
+
+export const {action_name } = cartSlice.actions; // export actions
+
+export default cartSlice.reducer;
+

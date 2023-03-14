@@ -13,8 +13,10 @@ import Profile from "./src/Component/Profile";
 import ProfileClass from "./src/Component/Class";
 import Shimmer from "./src/Component/Shimmer";
 import UserContext from "./src/Component/utils/UserContext";
-// import InstaMart from "./src/Component/InstaMart";
+import store from "./src/Component/utils/store";
+import { Provider } from "react-redux";
 import Form from "./src/Component/Form";
+import Cart from "./src/Component/Cart";
 
 const InstaMart = lazy(() => import("./src/Component/InstaMart")); // this is login bundling,code splitting,chunking,lazy loading,onDemand loading
 
@@ -37,15 +39,17 @@ const App = () => {
         Logout
         {userDetails.name}
       </button>
-      <UserContext.Provider
-        value={{
-          user: userDetails,
-        }}
-      >
-        <Header />
-        <Outlet></Outlet>
-        <Footer />
-      </UserContext.Provider>
+      <Provider store={store}>
+        <UserContext.Provider
+          value={{
+            user: userDetails,
+          }}
+        >
+          <Header />
+          <Outlet></Outlet>
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -94,6 +98,10 @@ const appRouter = createBrowserRouter([
             <InstaMart />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

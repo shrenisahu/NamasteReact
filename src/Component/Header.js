@@ -3,8 +3,12 @@ import UserContext from "./utils/UserContext";
 import Logo from "./Logo";
 import useLoggedIn from "./utils/hooks/useLoggedIn";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import cartSlice from "./utils/cartSlice";
+// import store from "./utils/store";
 const Header = () => {
   const { user } = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart.items);
   // const logIn = useLoggedIn();
   return (
     <div className="header">
@@ -21,10 +25,12 @@ const Header = () => {
           <Link to="/contact">
             <li>Contact Us</li>
           </Link>
-          <li>Cart Us</li>
 
           <Link to="/instamart">
             <li>Instamart</li>
+          </Link>
+          <Link to="/cart">
+            <li>Cart-{cartItems.length}</li>
           </Link>
 
           <h1>{user.name}</h1>

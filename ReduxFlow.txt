@@ -1,0 +1,47 @@
+STEP 1:create a store
+const store=configureStore({})    // import RTK
+
+STEP 2:Provide that store to our app
+ <Provider store={store}>         // import React-Redux
+  </Provider>
+
+
+STEP 3:Create a slice
+const cartSlice=createSlice({
+    name:name_of_slice,
+    initialState:{
+
+    }
+    reducers:{
+        action_name:(state,action)=>{
+            // do not return anything ,Just directly modify the state
+        }
+        action_name1:function1,
+         action_name2:function2,
+
+
+    }
+    
+})
+export const{action1,action2}=cartSlice.actions;
+export default cartSlice.reducer;
+
+
+STEP 4:Put that slice in store.js
+
+ reducer: {
+    cart: cartSlice, // name of slice:slice
+  },
+
+STEP 5:now when a button is clicked dispatch an action
+import { useDispatch } from "react-redux";
+ const dispatch = useDispatch();
+
+  function handleClearCart() {
+    dispatch(clearCart());
+  }  
+
+STEP 6:Subscribe th the particular slice of the store.Do not subscribe to the whole store.it has performance relate issues.
+import { useSelector } from "react-redux";
+const cartItems = useSelector((store) => store.cart.items);
+
